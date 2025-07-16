@@ -7,7 +7,7 @@ export const register = async (req, res) => {
 
   try {
     // HASH THE PASSWORD
-
+//kkk
     const hashedPassword = await bcrypt.hash(password, 10);
 
     console.log(hashedPassword);
