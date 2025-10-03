@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import SearchBar from "../../components/searchBar/SearchBar";
 import "./homePage.scss";
+
 import { AuthContext } from "../../context/AuthContext";
 
 function HomePage() {
@@ -19,10 +20,10 @@ function HomePage() {
             Whether buying or renting, your dream place is just a few clicks away.
           </p>
 
-          <div className="mt-2">
+          <div className="search-bar-container mt-2">
             <SearchBar />
           </div>
-
+             
           <div className="boxes mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="box text-center">
               <h1 className="font-extrabold">16+</h1>

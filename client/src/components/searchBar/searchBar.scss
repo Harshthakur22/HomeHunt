@@ -2,97 +2,120 @@
 
 .searchBar {
   .type {
-
-
+    display: flex; /* Use flexbox to align the buttons horizontally */
+    gap: 15px; /* Add space between buttons */
+    margin-bottom: 1rem; /* Optional: space below the buttons */
+    
     button {
-      padding: 16px 36px;
+      padding: 12px 30px;
       border: 1px solid #999;
-      border-bottom: none;
-      cursor: pointer;
       background-color: white;
       text-transform: capitalize;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      flex: 1; /* Make buttons take equal width in the available space */
 
+      /* Active button style */
       &.active {
         background-color: black;
         color: white;
       }
 
+      /* First button specific */
       &:first-child {
         border-top-left-radius: 5px;
         border-right: none;
       }
+
+      /* Last button specific */
       &:last-child {
         border-top-right-radius: 5px;
-        border-left: none;
+      }
+
+      &:hover {
+        background-color: #f0f0f0; /* Subtle hover effect */
       }
     }
   }
 
+  /* Form styling */
   form {
-    border: 1px solid #999;
     display: flex;
+    flex-wrap: wrap; /* Make the form elements stack on mobile */
     justify-content: space-between;
-    height: 64px;
-    gap: 5px;
+    gap: 15px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
 
-    @include sm {
-      flex-direction: column;
-      border: none;
-    }
-
+    /* Input fields */
     input {
-      border: none;
-      padding: 0px 10px;
-      width: 200px;
+      width: 100%;
+      max-width: 180px;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #333;
+      background-color: #fafafa;
+      transition: all 0.3s ease;
 
-      @include lg {
-        padding: 0px 5px;
-
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: 140px;
-        }
-      }
-      @include md {
-        width: 200px;
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: 200px;
-        }
+      /* Input Focus effect */
+      &:focus {
+        border-color: #fece51;
+        outline: none;
       }
 
-      @include sm{
-        width: auto;
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: auto;
-        }
-        padding: 20px;
-        border: 1px solid #999;
+      /* Placeholder Styling */
+      &::placeholder {
+        color: #999;
       }
     }
 
-    a{
-      flex: 1;
+    /* Submit button */
+    button {
+      border: none;
+      cursor: pointer;
       background-color: #fece51;
+      color: white;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-size: 16px;
+      flex-grow: 1;  /* Button will fill the remaining space */
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
-      button {
-        border: none;
-        cursor: pointer;
-        background-color: #fece51;
-        
-        @include sm{
-          padding: 10px;
-        }
-        
-        img {
-          width: 24px;
-          height: 24px;
-        }
+      /* Button Hover effect */
+      &:hover {
+        background-color: #fdb813;
       }
+
+      img {
+        width: 14px;  /* Smaller search icon */
+        height: 14px;
+        margin-right: 8px; /* Space between icon and text */
+      }
+    }
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .type {
+      justify-content: center; /* Center buttons on mobile */
+    }
+
+    form {
+      flex-direction: column;  /* Stack form elements on mobile */
+      gap: 12px;
+    }
+
+    input, button {
+      width: 100%;  /* Make inputs and buttons full width on mobile */
     }
   }
 }
