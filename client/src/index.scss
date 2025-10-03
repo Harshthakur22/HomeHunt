@@ -1,3 +1,27 @@
+:root{
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #666666;
+  --surface: #ffffff;
+  --surface-2: #fcf5f3;
+  --primary: #1f1f1f;
+  --accent: #fece51;
+  --border: #eeeeee;
+  --shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"]{
+  --bg: #0d1117;
+  --text: #f1f5f9; /* brighter text */
+  --muted: #cbd5e1; /* brighter muted text */
+  --surface: #111827; /* card/background */
+  --surface-2: #0b1220; /* navbar/right */
+  --primary: #f1f5f9;
+  --accent: #ffce54;
+  --border: #263244;
+  --shadow: 0 16px 28px rgba(0,0,0,0.55);
+}
+
 *{
   padding: 0;
   margin: 0;
@@ -11,5 +35,13 @@ a {
 
 body{
   font-family: "Lato", sans-serif;
-  overflow: hidden;
+  /* allow natural page scrolling */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  color: var(--text);
+  background: var(--bg);
 }
+
+/* smooth color transitions */
+*{ transition: color .15s ease, background-color .15s ease, border-color .15s ease; }

@@ -5,16 +5,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--text);
 
   a {
-    transition: all 0.4s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
 
     @include sm {
       display: none;
-    }
-
-    &:hover {
-      scale: 1.05;
     }
   }
 
@@ -51,8 +50,12 @@ nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: #fcf5f3;
+    background-color: var(--surface-2);
     height: 100%;
+    position: relative;
+    gap: 16px;
+    overflow: hidden; /* clip hidden menu */
+    z-index: 1; /* ensure on top of page content */
 
     @include md {
       background-color: transparent;
@@ -60,20 +63,29 @@ nav {
 
     a {
       padding: 12px 24px;
-      margin: 20px;
+      margin: 0; /* remove dead zones around links */
+    }
+
+    .themeToggle{
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
     }
 
     .user{
       display: flex;
       align-items: center;
       font-weight: bold;
+      gap: 16px;
 
       img{
         width: 40px;
         height: 40px;
         border-radius: 50%;
         object-fit: cover;
-        margin-right: 20px;
       }
 
       span{
@@ -84,10 +96,16 @@ nav {
 
       .profile{
         padding: 12px 24px;
-        background-color: #fece51;
+        background-color: var(--accent);
         cursor: pointer;
         border: none;
         position: relative;
+        border-radius: 6px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+        z-index: 2; /* keep above hidden layers */
         
         .notification{
           position: absolute;
@@ -106,8 +124,44 @@ nav {
       }
     }
 
+    .signin {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 12px 24px;
+      height: 44px; /* full clickable box */
+      box-sizing: border-box;
+      z-index: 2;
+
+      &:hover {
+        background-color: #f3f3f3;
+        border-color: #bbb;
+        box-shadow: var(--shadow);
+      }
+    }
+
     .register {
-      background-color: #fece51;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent);
+      border-radius: 6px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 12px 24px;
+      height: 44px; /* full clickable box */
+      box-sizing: border-box;
+      z-index: 2;
+
+      &:hover {
+        filter: brightness(0.98);
+        box-shadow: var(--shadow);
+      }
     }
 
     .menuIcon {
@@ -128,20 +182,29 @@ nav {
     .menu {
       position: absolute;
       top: 0;
-      right: -50%;
-      background-color: black;
-      color: white;
+      right: 0;
+      background-color: #000;
+      color: #fff;
       height: 100vh;
-      width: 50%;
-      transition: all 1s ease;
+      width: 0; /* collapse when inactive */
+      transition: transform 0.4s ease, opacity 0.2s ease, width 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 24px;
+      pointer-events: none;
+      transform: translateX(100%);
+      opacity: 0;
+      visibility: hidden; /* fully hide when inactive */
 
       &.active {
-        right: 0;
+        width: 50%;
+        transform: translateX(0);
+        pointer-events: auto;
+        z-index: 998;
+        opacity: 1;
+        visibility: visible;
       }
 
       @include sm {
