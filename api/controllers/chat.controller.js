@@ -25,6 +25,7 @@ export const getChats = async (req, res) => {
           avatar: true,
         },
       });
+      // chat functionality
       chat.receiver = receiver;
     }
 
