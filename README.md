@@ -1,6 +1,4 @@
-Here’s a crisp, professional README.md draft for your **HomeHunt** project (which you can adjust to fit your tone and any missing details):
 
----
 
 # HomeHunt
 
@@ -88,6 +86,7 @@ This project is open-source and available under the [MIT License](LICENSE).
 Created by [Harsh Thakur](https://github.com/Harshthakur22). Feel free to connect via GitHub for any questions or suggestions.
 
 ---
+
 
 
 
